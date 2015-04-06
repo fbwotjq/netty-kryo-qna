@@ -2,13 +2,10 @@ package demo;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-
-import java.util.Map;
-import java.util.Set;
-
+import io.netty.handler.logging.LogLevel;
+import io.netty.handler.logging.LoggingHandler;
 import demo.tcp.kryo.NettyKryoProtocolInitalizer;
 
 public class Server {
@@ -23,7 +20,7 @@ public class Server {
 		ServerBootstrap serverBootstrap = new ServerBootstrap();
 		serverBootstrap.group(bossNioEventLoopGroup, workerNioEventLoopGroup)
 				.channel(NioServerSocketChannel.class)
-				//.handler(new LoggingHandler(LogLevel.DEBUG))
+				.handler(new LoggingHandler(LogLevel.DEBUG))
 				.childHandler(nettyKryoProtocolInitalizer);
 		
 		try {

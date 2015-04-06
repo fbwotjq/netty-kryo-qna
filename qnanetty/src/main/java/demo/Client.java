@@ -17,9 +17,14 @@ public class Client {
 
 	static final String HOST = System.getProperty("host", "127.0.0.1");
     static final int PORT = Integer.parseInt(System.getProperty("port", "8080"));
+    public static long startPoint = 0;
+    public static long endPoint = 0;
+    public static int requestIndex = 0;
+    public static int requestEndIndex = 10000;
     
     public static void main(String[] args) {
 		
+    	startPoint = System.currentTimeMillis();
     	EventLoopGroup group = new NioEventLoopGroup();
     	
         try {

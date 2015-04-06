@@ -3,3 +3,5 @@
 /NettyKryoHandler.class
 /NettyKryoProtocolInitalizer.class
 /ObjectClientHandler.class
+/NettyKryoDecoder$MsgMeta.class
+/MsgMeta.class

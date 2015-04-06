@@ -1,6 +1,7 @@
 package demo.tcp.kryo;
 
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToByteEncoder;
 
@@ -27,7 +28,8 @@ public class NettyKryoEncoder extends MessageToByteEncoder<Object> {
         
         byte[] byteArray = output.toBytes();
         out.writeBytes(byteArray);
-        ctx.writeAndFlush(out);
+        ctx.write(Unpooled.copiedBuffer(out));
+		ctx.writeAndFlush(Unpooled.EMPTY_BUFFER);
 	}
 
 
